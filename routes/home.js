@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
                     console.log(howls);
                     res.local('howls', howls);
                     res.local('account', account);
-                    res.local('title', 'Howler');
+                    res.local('title', 'NodeBin');
     
                     try {
                         res.render('home');

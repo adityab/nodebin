@@ -1,0 +1,26 @@
+!!!
+html(lang="en")
+  head
+    title= title
+    link(rel='stylesheet',type='text/css',href='/stylesheets/bootstrap.css')
+    script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js')
+    script(type='text/javascript',src='/js/main.js')
+    script(type='text/javascript',src='http://static.ak.fbcdn.net/connect/en_US/core.js')
+  body(style='background-color: #FFFAFF;')
+    div.container
+      -if(account && account.data.content.username)
+        div(style='float:right;margin-top:20px;position:relative;left:-60px;')
+          a(href='/'+account.data.content.username,style='margin-right:20px;')=account.data.content.firstName+' '+account.data.content.lastName
+          a(href='/logout') Logout
+      -else if(!account)
+        div#facebook_login(style='position:relative;float:right;width:200px;padding-top:10px;')
+          div#fb-login.fb_button(style='float:left; background-position: left -188px')                
+            a.fb_button_medium(href='/auth/facebook')
+              span#fb_login_text.fb_button_text Login
+      h1
+        a(href='/', class='alert-message') Howler 
+          small beta
+
+      a(href='/about/this', class='alert-message error') about
+      div
+        != body
