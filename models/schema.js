@@ -1,10 +1,19 @@
 var Schema = mongoose.Schema;
+var ObjectId = mongoose.ObjectId;
 
 var PasteModel = new Schema({
-    author: ObjectId,
-    content: String,
-    timestamp: { type: Date, default: Date.now() },
-    language: String
+    author: { type: ObjectId, ref = "user" },
+    content: { type: String, required: true }
+    timestamp: { 
+        type: Date, 
+        default: Date.now(),
+        required: true
+    },
+    language: { 
+        type: String, 
+        default: "plaintext", 
+        required: true 
+    }
 });
 
 var UserModel = new Schema({
@@ -12,10 +21,15 @@ var UserModel = new Schema({
     lastname: String,
     email: String,
     identity: {
-        provider: String,
-        account: String
+        provider: { type: String, default: "nodebin" },
+        id: String,
+        required: true
     },
-    date: { type: Date, default: Date.now() }
+    date: { 
+        type: Date, 
+        default: Date.now(),
+        required: true
+    }
 });
 
 mongoose.model('paste', PasteModel, 'paste');
