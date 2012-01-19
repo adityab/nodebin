@@ -1,4 +1,4 @@
-app.get('/:username', function(req, res) {
+app.get('/user/:username', function(req, res) {
     loadAccount(req, function(err, account) {
         if(err) console.log(err);
         else {

@@ -50,7 +50,7 @@ require('./global_funcs.js');
 // Routes
 require('./routes/home.js');
 require('./routes/auth.js');
-require('./routes/howl.js');
+require('./routes/paste.js');
 require('./routes/user.js');
 require('./routes/about.js');
 

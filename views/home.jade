@@ -1,13 +1,13 @@
 -if(account && account.data.content.username)
     div(style='margin-left: 30%; margin-right: 30%;')
       h5 What do you want to howl about?
-      form(action='/howl',method='post')
-        input(type='submit',value='Howl!',class='btn primary')
-        textarea(name='howl', style: 'width: 100%;')
+      form(action='/paste',method='post')
+        input(type='submit',value='Paste!',class='btn primary')
+        textarea(name='text', style: 'width: 100%;')
 
 div(style='margin-left: 30%; margin-right: 30%; background-color: #FFFFFF; border: none; padding: 40px;', class='well')
-  -for(var i=0;i<howls.length;i++)
+  -for(var i=0;i<pastes.length;i++)
     blockquote
-      span=howls[i].data.content.text
-      div(style='color:#999999;font-size:12px;')=howLongAgo(howls[i].date)+' ago by '
-      a(href='/'+howls[i].data.content.tags[0], class='label notice')=howls[i].data.content.tags[1]+' '+howls[i].data.content.tags[2]
+      span=pastes[i].data.content.text
+      div(style='color:#999999;font-size:12px;')=howLongAgo(pastes[i].date)+' ago'
+      p(class='label notice')=pastes[i].data.content.language

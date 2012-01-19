@@ -3,7 +3,7 @@ app.get('/about/this', function(req, res) {
         if(err) console.log(err);
         else {
             res.local('account', account);
-            res.local('title', 'About Howler');
+            res.local('title', 'About NodeBin');
             res.render('about');
         }
     });

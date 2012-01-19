@@ -4,17 +4,17 @@ app.get('/', function(req, res) {
             console.log(err.message);
         }
         else {
-        var howls_per_page = 100;
+        var pastes_per_page = 100;
         turbulence.queryPost( 
             {}, 
-            { sort: [['date', 'descending']], limit: howls_per_page },
-            function(err, howls) {
+            { sort: [['date', 'descending']], limit: pastes_per_page },
+            function(err, pastes) {
                 if(err) {
                     console.log(err.message);
                 }
                 else {
-                    console.log(howls);
-                    res.local('howls', howls);
+                    console.log(pastes);
+                    res.local('pastes', pastes);
                     res.local('account', account);
                     res.local('title', 'NodeBin');
     
@@ -31,4 +31,3 @@ app.get('/', function(req, res) {
         } // end else
     });
 });
-
