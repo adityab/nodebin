@@ -24,5 +24,16 @@ mongoose.connect('mongodb://localhost/nodebin', function(err) {
         console.log(err);
 });
 
-//Configuration
+/* 
+ * Configuration
+ */
 require('./fb_creds.js');
+
+app.configure(function() {
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.session( { secret: 'nodebinsecret' }));//?
+    app.use(express.logger( { format: ':date :remote-addr :method :status :url'} ));//?
+    app.use(auth());//?
+});
