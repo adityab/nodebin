@@ -12,8 +12,8 @@ fs = require('fs');
 app = module.exports = express.createServer('127.0.0.1');
 
 // Connect to the Turbulence engine
-turbulence = require('turbulence-engine')
-turbulence.connect('localhost', 'newdb');
+turbulence = require('turbulence-engine');
+turbulence.connect('localhost', 'nodebin_db');
 
 connect = require('connect');
 auth = require('connect-auth');
@@ -26,7 +26,7 @@ app.configure( function() {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-    app.use(express.session( { secret: 'howlersecret' } ));
+    app.use(express.session( { secret: 'nodebinsecret' } ));
     app.use(express.logger( { format: ':date :remote-addr :method :status :url' } ));
     app.use(auth( [ auth.Facebook( { appId: fbId, appSecret: fbSecret, scope: "email", callback: fbCallbackAddress } ) ] ));
     app.use(express.static(__dirname + '/public'));
