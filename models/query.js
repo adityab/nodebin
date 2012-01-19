@@ -6,7 +6,7 @@ getRecent = function(userid, language, callback) {
         });
     }
     else {
-        paste.find({ "author": userid }, { sort: [[ "timestamp", "desc" ]], limit: 25 }).toArray( function(err, docs) {
+        paste.find({ "author": userid }, { sort: [[ "timestamp", "desc" ]], limit: 25 }).populate("author").toArray( function(err, docs) {
             return callback(err, docs);
         });
     }
