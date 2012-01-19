@@ -14,9 +14,9 @@ var UserModel = new Schema({
     identity: {
         provider: String,
         account: String
-    }
+    },
+    date: { type: Date, default: Date.now() }
 });
 
-mongoose.paste('paste', PasteModel, 'paste');
-mongoose.paste('user', UserModel, 'user');
-
+mongoose.model('paste', PasteModel, 'paste');
+mongoose.model('user', UserModel, 'user');
