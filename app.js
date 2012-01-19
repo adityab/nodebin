@@ -35,5 +35,16 @@ app.configure(function() {
     app.use(express.cookieParser());
     app.use(express.session( { secret: 'nodebinsecret' }));//?
     app.use(express.logger( { format: ':date :remote-addr :method :status :url'} ));//?
+    app.use(app.router);//To mount the application routes. TODO: Create routes/?
     app.use(auth());//?
 });
+
+app.configure('development', function() {
+    app.use(express.static(__dirname + '/public')); 
+    app.use(express.errorHandler( { dumpExceptions: true, showStack: true } ));
+});
+
+app.configure('production', function() {
+    app.use(express.errorHandler());
+});
+
